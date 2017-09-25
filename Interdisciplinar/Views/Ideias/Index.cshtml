@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Interdisciplinar.Models.Ideia>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoProblema)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recomendacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataAnalise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aprovado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resposta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdIdeiaPai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdIdeiaDepartamento)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoProblema)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recomendacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAnalise)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aprovado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resposta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdIdeiaPai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdIdeiaDepartamento)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdeiaId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdeiaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdeiaId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

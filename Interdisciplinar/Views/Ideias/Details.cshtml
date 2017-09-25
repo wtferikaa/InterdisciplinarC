@@ -1,0 +1,106 @@
+﻿@model Interdisciplinar.Models.Ideia
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Ideia</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DescricaoProblema)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DescricaoProblema)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Recomendacao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Recomendacao)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataCadastro)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataAnalise)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataAnalise)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Aprovado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Aprovado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Resposta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Resposta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Matricula)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Matricula)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IdIdeiaPai)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IdIdeiaPai)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IdIdeiaDepartamento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IdIdeiaDepartamento)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdeiaId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
