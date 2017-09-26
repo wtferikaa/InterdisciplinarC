@@ -31,6 +31,7 @@ namespace Interdisciplinar.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Ideia ideia)
         {
+            ideia.DataCadastro = DateTime.Now;
             _context.Ideias.Add(ideia);
             _context.SaveChanges();
 
