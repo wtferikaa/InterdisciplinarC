@@ -47,15 +47,15 @@ namespace Interdisciplinar.Controllers
                     HttpStatusCode.BadRequest);
             }
 
-            var ideia = _context.DepartamentosOpet.Find(id.Value);
+            var departamentoOpet = _context.DepartamentosOpet.Find(id.Value);
 
 
-            if (ideia == null)
+            if (departamentoOpet == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(ideia);
+            return View(departamentoOpet);
         }
 
         [HttpPost]

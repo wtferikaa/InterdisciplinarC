@@ -33,7 +33,7 @@
                 @Html.DisplayNameFor(model => model.Turno)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCurso)
+                @Html.DisplayNameFor(model => model.CursoId)
             </th>
             <th></th>
         </tr>
@@ -56,12 +56,12 @@
                 @Html.DisplayFor(modelItem => item.Turno)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCurso)
+                @Html.DisplayFor(modelItem => item.CursoId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id=item.AlunoId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.AlunoId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.AlunoId })
             </td>
         </tr>
     }

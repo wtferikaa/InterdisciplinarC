@@ -18,13 +18,13 @@ namespace Interdisciplinar.Models
         public String Resposta { get; set; } 
 
 
-        public int? Id { get; set; }
+        public int? AlunoId { get; set; }
         public Aluno Aluno { get; set; }
         
-        public int IdIdeiaPai { get; set; }
+        public int? IdeiaPaiId { get; set; }
         public Ideia IdeiaExistente { get; set; } 
 
-        public int? IdIdeiaDepartamento { get; set; }
+        public int? DepartamentosOpetId { get; set; }
         public DepartamentoOpet DepartamentosOpet { get; set; }
     }
 }

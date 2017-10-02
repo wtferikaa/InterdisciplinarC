@@ -117,6 +117,7 @@ namespace Interdisciplinar.Controllers
             Curso curso = _context.Cursos.Find(id);
             _context.Cursos.Remove(curso);
             _context.SaveChanges();
+            TempData["Message"] = "Curso " + curso.Nome.ToUpper() + " foi removido";
 
             return RedirectToAction("Index");
         }

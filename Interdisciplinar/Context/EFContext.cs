@@ -24,6 +24,7 @@ namespace Interdisciplinar.Contexts
         {
             modelBuilder.Entity<Ideia>()
                 .HasOptional<Ideia>(p => p.IdeiaExistente);
+
         }
 
     }

@@ -7,7 +7,7 @@ namespace Interdisciplinar.Models
 {
     public class Curso
     {
-        public int Id { get; set; }
+        public int CursoId { get; set; }
         public String Nome { get; set; }
         public String Coordenador { get; set; }
         public String EmailCoordenador { get; set; }
