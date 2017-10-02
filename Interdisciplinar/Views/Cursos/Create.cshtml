@@ -19,9 +19,18 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Coordenador, htmlAttributes: new { @class = "control-label col-md-2"})
+                    @Html.LabelFor(model => model.EmailCoordenador, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Nome, new { htmlAtributtes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => Model.Nome, "", new { @class = "text-danger" })
+
+                        @Html.EditorFor(model => model.Coordenador, new { htmlAtributtes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => Model.Coordenador, "", new { @class = "text-danger" })
+
+                        @Html.EditorFor(model => model.EmailCoordenador, new { htmlAtributtes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => Model.EmailCoordenador, "", new { @class = "text-danger" })
+
                     </div>
                 </div>
             </div>

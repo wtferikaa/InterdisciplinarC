@@ -115,6 +115,7 @@ namespace Interdisciplinar.Controllers
             DepartamentoOpet departamentoOpet = _context.DepartamentosOpet.Find(id);
             _context.DepartamentosOpet.Remove(departamentoOpet);
             _context.SaveChanges();
+            TempData["Message"] = "Departamento " + departamentoOpet.Nome.ToUpper() + " foi removido";
 
             return RedirectToAction("Index");
         }
