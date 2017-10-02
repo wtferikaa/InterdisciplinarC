@@ -19,11 +19,14 @@ namespace Interdisciplinar.Controllers
         // GET: Alunos
         public ActionResult Index()
         {
-            return View(_context.Alunos.OrderBy(s => s.Nome));
+            var alunos = _context.Alunos.Include(c => c.Curso).OrderBy(n => n.Nome);
+            return View(alunos);
         }
+
 
         public ActionResult Create()
         {
+            ViewBag.CursoId = new SelectList(_context.Cursos.OrderBy(b => b.Nome), "CursoId", "Nome");
             return View();
         }
 
@@ -31,10 +34,16 @@ namespace Interdisciplinar.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Aluno aluno)
         {
-            _context.Alunos.Add(aluno);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
+            try
+            {
+                _context.Alunos.Add(aluno);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(aluno);
+            }
         }
 
 
@@ -55,6 +64,8 @@ namespace Interdisciplinar.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
+            ViewBag.CursoId = new SelectList(_context.Cursos.OrderBy(b => b.Nome), "CursoId", "Nome", aluno.CursoId);
+
             return View(aluno);
         }
 
@@ -62,50 +73,60 @@ namespace Interdisciplinar.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Aluno aluno)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Entry(aluno).State = EntityState.Modified;
-                _context.SaveChanges();
 
-                return RedirectToAction("Index");
+
+                if (ModelState.IsValid)
+                {
+                    _context.Entry(aluno).State = EntityState.Modified;
+                    _context.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+
+                return View(aluno);
             }
+            catch
+            {
+                return View(aluno);
 
-            return View(aluno);
+            }
         }
 
-        public ActionResult Details(long? id)
-        {
-            if (id == null)
+            public ActionResult Details(long? id)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var aluno = _context.Alunos.Find(id.Value);
+
+                if (aluno == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+                return View(aluno);
             }
 
-            var aluno = _context.Alunos.Find(id.Value);
 
-            if (aluno == null)
+            public ActionResult Delete(long? id)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var aluno = _context.Alunos.Find(id.Value);
+
+                if (aluno == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+                return View(aluno);
             }
-            return View(aluno);
-        }
-
-
-        public ActionResult Delete(long? id)
-        {
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var aluno = _context.Alunos.Find(id.Value);
-
-            if (aluno == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            }
-            return View(aluno);
-        }
 
 
         [HttpPost]
@@ -116,6 +137,7 @@ namespace Interdisciplinar.Controllers
             Aluno aluno = _context.Alunos.Find(id);
             _context.Alunos.Remove(aluno);
             _context.SaveChanges();
+            TempData["Message"] = "Aluno " + aluno.Nome.ToUpper() + " foi removido";
 
             return RedirectToAction("Index");
         }

@@ -7,7 +7,7 @@ namespace Interdisciplinar.Models
 {
     public class Aluno
     {
-        public int AlunoId{ get; set; }
+        public int? AlunoId{ get; set; }
         public String Nome { get; set; }
         public Decimal Telefone { get; set; }
         public String Email { get; set; }

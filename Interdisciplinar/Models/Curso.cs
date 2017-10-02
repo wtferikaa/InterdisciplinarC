@@ -12,5 +12,6 @@ namespace Interdisciplinar.Models
         public String Coordenador { get; set; }
         public String EmailCoordenador { get; set; }
 
+        public virtual ICollection<Curso> curso { get; set; }
     }
 }
