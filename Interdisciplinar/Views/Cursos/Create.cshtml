@@ -10,52 +10,57 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            Registro de um novo curso
-        </div>
+
+    <h2>Registro de um novo curso</h2>
+
+    <table class="table	table-striped table-hover table-bordered table-condensed">
         <div class="panel-body">
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-                    @Html.LabelFor(model => model.Coordenador, htmlAttributes: new { @class = "control-label col-md-2"})
-                    @Html.LabelFor(model => model.EmailCoordenador, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(model => model.Nome, "Nome", htmlAttributes: new { @class = "control-label col-md-1" })
+                    <div class="col-md-11">
                         @Html.EditorFor(model => model.Nome, new { htmlAtributtes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => Model.Nome, "", new { @class = "text-danger" })
-
-                        @Html.EditorFor(model => model.Coordenador, new { htmlAtributtes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => Model.Coordenador, "", new { @class = "text-danger" })
-
-                        @Html.EditorFor(model => model.EmailCoordenador, new { htmlAtributtes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => Model.EmailCoordenador, "", new { @class = "text-danger" })
-
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel-footer panel-info">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Adicionar um curso" class="btn btn-danger" />
-                @Html.ActionLink("Retornar para a listagem de cursos", "Index", null, new { @class = "btn btn-warning" })
 
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Coordenador, "Coordenador", htmlAttributes: new { @class = "control-label col-md-1" })
+                    <div class="col-md-11">
+                        @Html.EditorFor(model => model.Nome, new { htmlAtributtes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => Model.Coordenador, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailCoordenador, "EmailCoordenador", htmlAttributes: new { @class = "control-label col-md-1" })
+                    <div class="col-md-11">
+                        @Html.EditorFor(model => model.EmailCoordenador, new { htmlAtributtes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => Model.EmailCoordenador, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-offset-1 col-md-11">
+                    <input type="submit" value="Adicionar um curso" class="btn btn-primary" />
+                    @Html.ActionLink("Retornar para a listagem de cursos", "Index", null, new { @class = "btn btn-success" })
+
+                </div>
+                <br />
+                <br />
             </div>
-            <br />
-            <br />
         </div>
-    </div>
+    </table>
 }
 
-@section ScriptPage {
-    <script scr="~Scripts/jquery.validate.min.js">
-    </script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js">
-    </script>
+@section	ScriptPage	{
     <script type="text/javascript">
         $(document).ready(function () {
-        $('li').removeClass("active");
-        $('#liCursos').addClass("active");
-    	});
+            $('li').removeClass("active");
+            $('#liCursos').addClass("active");
+        });
     </script>
+
 }
+
+

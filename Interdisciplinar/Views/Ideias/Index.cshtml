@@ -1,25 +1,31 @@
 ﻿@model IEnumerable<Interdisciplinar.Models.Ideia>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Listagem	de Ideias";
 }
 
-<!DOCTYPE html>
+@if (@TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["Message"].
+    </div>
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+
+<h2>Relação	de ideias cadastradas</h2>
+
+<table class="table	table-striped table-hover table-bordered table-condensed">
+    <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdeiaId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.DescricaoProblema)
             </th>
@@ -39,57 +45,81 @@
                 @Html.DisplayNameFor(model => model.Resposta)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdeiaId)
+                @Html.DisplayNameFor(model => model.AlunoId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdeiaPaiId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DepartamentosOpetId)
+                @Html.DisplayNameFor(model => model.DepartamentoOpetId)
             </th>
-            <th></th>
+
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoProblema)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recomendacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCadastro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAnalise)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aprovado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Resposta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdeiaId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdeiaPaiId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartamentosOpetId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdeiaId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdeiaId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.IdeiaId })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdeiaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DescricaoProblema)
+                    </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Recomendacao)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DataAnalise)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Aprovado)
+                <th>
+                    @Html.DisplayFor(modelItem => item.Resposta)
+
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Aluno.Nome)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.IdeiaExistente.Nome)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DepartamentosOpet.Nome)
+                </th>
+
+              
+                <td>
+                    @Html.ActionLink("Alterar", "Edit", new { id = item.IdeiaId })	|
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.IdeiaId })	|
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdeiaId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Registrar	uma nova Ideia", "Create", null, new { @class = "btn btn-primary" })
+
+@section	styles{
+    <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet">
+}
+
+@section	ScriptPage	{
+    <script src="@Url.Content("~/scripts/DataTables/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/scripts/DataTables/dataTables.bootstrap.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').dataTable({ "order": [[1, "asc"]] });
+            $('li').removeClass("active");
+            $('#liIdeias').addClass("active");
+
+        });
+    </script>
+
+}

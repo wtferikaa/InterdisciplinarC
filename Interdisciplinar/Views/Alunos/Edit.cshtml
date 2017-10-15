@@ -2,52 +2,84 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Visualizando	os	dados	de	um	aluno";
+    ViewBag.Title = "Alterando	os	dados	de	um	aluno";
 
 }
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="panel	panel-primary">
-        <div class="panel-heading">
-            Alteração	dos	dados	de	um	aluno
-        </div>
-        <div class="panel-body">
-            <div class="form-horizontal">
-                <h4>Aluno</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.AlunoId)
+   
+           <h2> Alteração dos dados de  um aluno</h2>
+        <table class="table	table-striped table-hover table-bordered table-condensed">
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.AlunoId)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label	col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label	col-md-1" })
+                        <div class="col-md-11">
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CursoId, "CursoId", htmlAttributes: new { @class = "control-label	col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("CursoId", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.CursoId, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label	col-md-1" })
+                        <div class="col-md-11">
+                            @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2	col-md-10">
-                        <input type="submit" value="Gravar	alterações" class="btn	btn-default" />
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label	col-md-1" })
+                        <div class="col-md-11">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Turma, htmlAttributes: new { @class = "control-label	col-md-1" })
+                        <div class="col-md-11">
+                            @Html.EditorFor(model => model.Turma, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Turma, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Turno, htmlAttributes: new { @class = "control-label	col-md-1" })
+                        <div class="col-md-11">
+                            @Html.EditorFor(model => model.Turno, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Turno, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CursoId, "CursoId", htmlAttributes: new { @class = "control-label	col-md-1" })
+                        <div class="col-md-11">
+                            @Html.DropDownList("CursoId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CursoId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-11">
+                            <input type="submit" value="Gravar alterações" class="btn btn-primary" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            </table>
+
 } @section	ScriptPage	{
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('li').removeClass("active");
-        $('#liAlunos').addClass("active");
-    });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liAlunos').addClass("active");
+        });
     </script>
 }
 

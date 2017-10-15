@@ -1,112 +1,155 @@
 ﻿@model Interdisciplinar.Models.Ideia
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Visualizando detalhes da ideia a ser removida";
 }
 
-<!DOCTYPE html>
+<h2>Visualizando detalhes da ideia a ser removida</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>Ideia</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Nome)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Nome)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DescricaoProblema)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DescricaoProblema)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Recomendacao)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Recomendacao)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DataCadastro)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DataCadastro)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DataAnalise)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DataAnalise)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Aprovado)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Aprovado)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Resposta)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Resposta)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AlunoId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AlunoId)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IdeiaPaiId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IdeiaPaiId)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DepartamentosOpetId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DepartamentosOpetId)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
+<div class="form-group">
+    @Html.LabelFor(model => model.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-user"></i>
+        </span>
+        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
     </div>
-</body>
-</html>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.DescricaoProblema)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-earphone"></i>
+        </span>
+        @Html.EditorFor(model => model.DescricaoProblema, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Recomendacao)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-envelope"></i>
+        </span>
+        @Html.EditorFor(model => model.Recomendacao, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.DataCadastro)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-pencil"></i>
+        </span>
+        @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.DataAnalise)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-bell"></i>
+        </span>
+        @Html.EditorFor(model => model.DataAnalise, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Aprovado)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-bell"></i>
+        </span>
+        @Html.EditorFor(model => model.Aprovado, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Resposta)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-bell"></i>
+        </span>
+        @Html.EditorFor(model => model.Resposta, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Aluno.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-education"></i>
+        </span>
+        @Html.EditorFor(model => model.Aluno.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.IdeiaExistente.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-education"></i>
+        </span>
+        @Html.EditorFor(model => model.IdeiaExistente.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DepartamentosOpet.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-education"></i>
+        </span>
+        @Html.EditorFor(model => model.DepartamentosOpet.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+<a href="#" class="btn btn-primary" data-toggle="modal"
+   data-target="#deleteConfirmationModal">Remover</a>
+@Html.ActionLink("Retornar	para a listagem", "Index", null, new { @class = "btn btn-success" })
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-ELTEismiss
+                        "modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">Confirmação	de	exclusão de ideia</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Você está prestes a remover a Ideia @Model.Nome.ToUpper() do cadastro.
+                </p>
+                <p>
+                    <strong>
+                        Você está certo	que	deseja	prosseguir?
+                    </strong>
+                </p>
+                @using (Html.BeginForm("Delete", "Ideias", FormMethod.Post, new { @id = "delete-form", role = "form" }))
+                {
+                    @Html.HiddenFor(a => a.IdeiaId)
+                    @Html.AntiForgeryToken()
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="$('#delete-form').submit();">
+                    Sim, exclua	esta ideia.
+                </button>
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">
+                    Não, não exclua	esta ideia.
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section ScriptPage	{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liIdeias').addClass("active");
+        });
+    </script>
+}
+

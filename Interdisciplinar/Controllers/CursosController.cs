@@ -79,7 +79,6 @@ namespace Interdisciplinar.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             var curso = _context.Cursos.Find(id.Value);
 
             if (curso == null)

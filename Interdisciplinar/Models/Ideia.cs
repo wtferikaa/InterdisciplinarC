@@ -16,6 +16,7 @@ namespace Interdisciplinar.Models
         public DateTime? DataAnalise { get; set; }
         public Boolean? Aprovado { get; set; }
         public String Resposta { get; set; } 
+       
 
 
         public int? AlunoId { get; set; }
@@ -24,7 +25,7 @@ namespace Interdisciplinar.Models
         public int? IdeiaPaiId { get; set; }
         public Ideia IdeiaExistente { get; set; } 
 
-        public int? DepartamentosOpetId { get; set; }
+        public int? DepartamentoOpetId { get; set; }
         public DepartamentoOpet DepartamentosOpet { get; set; }
     }
 }

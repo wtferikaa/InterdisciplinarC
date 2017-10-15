@@ -8,85 +8,79 @@
 
 @if (@TempData["Message"] != null)
 {
-    <div class="alert	alert-success" role="alert">
-        @TempData["Message"]
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @TempData["Message"].
     </div>
 
 }
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        Relação	de alunos registrados
-    </div>
-    <div class="panel-body">
-        <table class="table	table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AlunoId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Nome)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Telefone)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Turma)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Turno)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CursoId)
-                    </th>
-    
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AlunoId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <th>
-                            @Html.DisplayFor(modelItem => item.Telefone)
-                        </th>
-                        <th>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </th>
-                        <th>
-                            @Html.DisplayFor(modelItem => item.Turma)
-                        </th>
-                        <th>
-                            @Html.DisplayFor(modelItem => item.Turno)
-                        </th>
-                        <th>
-                            @Html.DisplayFor(modelItem => item.Curso.Nome)
-                        </th>
-                        <td>
-                            @Html.ActionLink("Alterar", "Edit", new { id = item.AlunoId }) |
-                            @Html.ActionLink("Detalhes", "Details", new { id = item.AlunoId }) |
-                            @Html.ActionLink("Eliminar", "Delete", new { id = item.AlunoId })
-                        </td>
-                    </tr>
-                }
+<h2>Relação	de alunos registrados</h2>
 
-            </tbody>
-        </table>
-    </div>
-    <div class="panel-footer panel-info">
-        @Html.ActionLink("Registrar	um novo Aluno", "Create", null, new { @class = "btn btn-success" })
-    </div>
-</div>
+<table class="table	table-striped table-hover table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AlunoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CursoId)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlunoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Turma)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Turno)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Curso.Nome)
+                </th>
+                <td>
+                    @Html.ActionLink("Alterar", "Edit", new { id = item.AlunoId }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.AlunoId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.AlunoId })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+@Html.ActionLink("Registrar	um novo Aluno", "Create", null, new { @class = "btn btn-primary" })
 
 @section styles
 {
@@ -100,12 +94,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.table').dataTable({ "order": [[1, "asc"]] });
+            $('li').removeClass("active");
+            $('#liCursos').addClass("active");
         });
-    </script>
-    <script type="text/javascript">
-        $('li').removeClass("active");
-        $('#liCursos').addClass("active");
-    	});
     </script>
 
 }

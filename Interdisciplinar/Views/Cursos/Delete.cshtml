@@ -5,35 +5,86 @@
     ViewBag.Title = "Visualizando detalhes de	um	curso";
 }
 
-<div class="panel	panel-primary">
-    <div class="panel-heading">
-        Dados	do curso a	ser	removido
+
+<h2>Dados	do curso a	ser	removido</h2>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	 glyphicon-user"></i>
+        </span>
+        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
     </div>
-    <div class="panel-body">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome)
-            @Html.LabelFor(model => model.Coordenador)
-            @Html.LabelFor(model => model.EmailCoordenador)
-            <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon	glyphicon-user">
-                    </i>
-                </span>
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                @Html.EditorFor(model => model.Coordenador, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                @Html.EditorFor(model => model.EmailCoordenador, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Coordenador)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	 glyphicon-user"></i>
+        </span>
+        @Html.EditorFor(model => model.Coordenador, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EmailCoordenador)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	 glyphicon-user"></i>
+        </span>
+        @Html.EditorFor(model => model.EmailCoordenador, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+
+<a href="#" class="btn btn-primary" data-toggle="modal"
+   data-target="#deleteConfirmationModal">Remover</a>
+@Html.ActionLink("Retornar	para a listagem", "Index", null, new { @class = "btn btn-success" })
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-ELTEismiss
+                        "modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">Confirmação	de	exclusão do curso</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Você está prestes a remover o curso @Model.Nome.ToUpper() do cadastro.
+                </p>
+                <p>
+                    <strong>
+                        Você está certo	que	deseja	prosseguir?
+                    </strong>
+                </p>
+                @using (Html.BeginForm("Delete", "Cursos", FormMethod.Post, new { @id = "delete-form", role = "form" }))
+                {
+                    @Html.HiddenFor(a => a.CursoId)
+                    @Html.AntiForgeryToken()
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="$('#delete-form').submit();">
+                    Sim, exclua	este curso.
+                </button>
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">
+                    Não, não exclua	este curso.
+                </button>
             </div>
         </div>
     </div>
-    <div class="panel-footer panel-info">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <input type="submit" value="Remover curso" class="btn	btn-danger" />
-            @Html.ActionLink("Retornar	para a	listagem", "Index", null, new { @class = "btn btn-info" })
-        }
-    </div>
-
 </div>
 
+@section ScriptPage	{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liCursos').addClass("active");
+        });
+    </script>
+}

@@ -5,12 +5,41 @@
 <head>
     <meta name="viewport" content="width=device-widht, initial-scale=1.0" charset="utf-8"/>
     <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet"/> 
+    <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet" /> 
+    <link href="@Url.Content("~/content/main.css")" rel="stylesheet" /> 
 @RenderSection("styles", false)
 
 </head>
-<body> 
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Bright Ideia Opet</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li id="liAlunos" role="presentation"> @Html.ActionLink("Alunos", "Index", "Alunos")</li>
+                    <li id="liCursos" role="presentation"> @Html.ActionLink("Cursos", "Index", "Cursos")</li>
+                    <li id="liDepartamentosOpet" role="presentation"> @Html.ActionLink("DepartamentosOpet", "Index", "DepartamentosOpet")</li>
+                    <li id="liIdeias" role="presentation"> @Html.ActionLink("Ideias", "Index", "Ideias")</li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
     <div class="container">
+
+        <div class="starter-template">
+            @RenderBody()
+        </div>
+
+    </div>
+    @*<div class="container">
         <div class="row">
             <div class="page-header	bg-danger">
                 <h1>Desenvolvimento	em	ASP.NET	MVC <small class="text-danger"> Utilizando o Bootstrap</small></h1>
@@ -39,8 +68,8 @@
                 <small>Layout com Bootstrap</small>
             </div>
         </div>
-     </div>
-    <script src="@Url.Content("~/scripts/jquery-1.10.2.js")"><</script>
+     </div>*@
+    <script src="@Url.Content("~/Scripts/jquery-3.2.1.js")"><</script>
     <script src="@Url.Content("~/scripts/bootstrap.js")"></script> 
     @RenderSection("ScriptPage", false);
 </body>

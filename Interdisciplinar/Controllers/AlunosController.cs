@@ -94,52 +94,59 @@ namespace Interdisciplinar.Controllers
             }
         }
 
-            public ActionResult Details(long? id)
+        public ActionResult Details(long? id)
+        {
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-
-                var aluno = _context.Alunos.Find(id.Value);
-
-                if (aluno == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-                }
-                return View(aluno);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
 
-            public ActionResult Delete(long? id)
+            Aluno aluno = _context.Alunos.Where(a => a.AlunoId == id).Include(c => c.Curso).First();
+
+            if (aluno == null)
             {
-
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-
-                var aluno = _context.Alunos.Find(id.Value);
-
-                if (aluno == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-                }
-                return View(aluno);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
+            return View(aluno);
+        }
+
+
+        public ActionResult Delete(long? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Aluno aluno = _context.Alunos.Where(a => a.AlunoId == id).Include(c => c.Curso).First();
+            if (aluno == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return View(aluno);
+        }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(long id)
         {
+            try
+            {
+                Aluno aluno = _context.Alunos.Find(id);
+                _context.Alunos.Remove(aluno);
+                _context.SaveChanges();
+                TempData["Message"] = "Aluno " + aluno.Nome.ToUpper() + " foi removido";
+                return RedirectToAction("Index");
+            }
 
-            Aluno aluno = _context.Alunos.Find(id);
-            _context.Alunos.Remove(aluno);
-            _context.SaveChanges();
-            TempData["Message"] = "Aluno " + aluno.Nome.ToUpper() + " foi removido";
+            catch
+            {
 
-            return RedirectToAction("Index");
+                return View();
+            }
         }
     }
 }

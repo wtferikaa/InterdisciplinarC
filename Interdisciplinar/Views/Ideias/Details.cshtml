@@ -1,106 +1,117 @@
 ﻿@model Interdisciplinar.Models.Ideia
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "visualizando	os	dados	de	um	aluno";
+
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Ideia</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Nome)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Nome)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DescricaoProblema)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DescricaoProblema)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Recomendacao)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Recomendacao)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DataCadastro)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DataCadastro)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DataAnalise)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DataAnalise)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Aprovado)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Aprovado)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Resposta)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Resposta)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AlunoId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AlunoId)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IdeiaPaiId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IdeiaPaiId)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DepartamentosOpetId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DepartamentosOpetId)
-            </dd>
-    
-        </dl>
+<h2>Visualizando	detalhes	de	um aluno</h2>
+<div class="form-group">
+    @Html.LabelFor(model => model.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-lightbulb"></i>
+        </span>
+        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IdeiaId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.DescricaoProblema)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-earphone"></i>
+        </span>
+        @Html.EditorFor(model => model.DescricaoProblema, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Recomendacao)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-envelope"></i>
+        </span>
+        @Html.EditorFor(model => model.Recomendacao, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.DataCadastro)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-pencil"></i>
+        </span>
+        @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.DataAnalise)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-bell"></i>
+        </span>
+        @Html.EditorFor(model => model.DataAnalise, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Aprovado)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-bell"></i>
+        </span>
+        @Html.EditorFor(model => model.Aprovado, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Resposta)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon	glyphicon-bell"></i>
+        </span>
+        @Html.EditorFor(model => model.Resposta, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Aluno.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-education"></i>
+        </span>
+        @Html.EditorFor(model => model.Aluno.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.IdeiaExistente.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-education"></i>
+        </span>
+        @Html.EditorFor(model => model.IdeiaExistente.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DepartamentosOpet.Nome)
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-education"></i>
+        </span>
+        @Html.EditorFor(model => model.DepartamentosOpet.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+    </div>
+</div>
+@Html.ActionLink("Alterar", "Edit", new { id = Model.IdeiaId }, new { @class = "btn	btn-primary" })
+@Html.ActionLink("Retornar	para	a	listagem", "Index", null, new { @class = "btn	btn-success" })
+
+@section ScriptPage	{
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('li').removeClass("active");
+                $('#liIdeias').addClass("active");
+            });
+    </script>
+}
+
