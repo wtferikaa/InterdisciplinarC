@@ -17,5 +17,7 @@ namespace Interdisciplinar.Models
         public int? CursoId { get; set; }
         public Curso Curso { get; set; }
 
+        public virtual ICollection<Ideia> Ideias { get; set; }
+    
     }
 }

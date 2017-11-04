@@ -407,6 +407,8 @@
     <Content Include="Views\Ideias\Edit.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Ideias\_PorAluno.cshtml" />
+    <Content Include="Views\Alunos\_PorCurso.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

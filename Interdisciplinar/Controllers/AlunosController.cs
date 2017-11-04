@@ -18,9 +18,11 @@ namespace Interdisciplinar.Controllers
 
         // GET: Alunos
         public ActionResult Index()
+
+             
         {
-            var alunos = _context.Alunos.Include(c => c.Curso).OrderBy(n => n.Nome);
-            return View(alunos);
+            return View(_context.Alunos.Include(c => c.Curso).OrderBy(n => n.Nome));
+            
         }
 
 
@@ -102,7 +104,7 @@ namespace Interdisciplinar.Controllers
             }
 
 
-            Aluno aluno = _context.Alunos.Where(a => a.AlunoId == id).Include(c => c.Curso).First();
+            Aluno aluno = _context.Alunos.Where(a => a.AlunoId == id).Include("Ideias.Aluno").First();
 
             if (aluno == null)
             {
