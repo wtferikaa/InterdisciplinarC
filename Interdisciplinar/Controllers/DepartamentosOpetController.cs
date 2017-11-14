@@ -111,13 +111,23 @@ namespace Interdisciplinar.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(long id)
         {
+            try
+            {
 
-            DepartamentoOpet departamentoOpet = _context.DepartamentosOpet.Find(id);
+                DepartamentoOpet departamentoOpet = _context.DepartamentosOpet.Find(id);
             _context.DepartamentosOpet.Remove(departamentoOpet);
             _context.SaveChanges();
             TempData["Message"] = "Departamento " + departamentoOpet.Nome.ToUpper() + " foi removido";
 
             return RedirectToAction("Index");
+
+            }
+
+            catch
+            {
+
+                return View();
+            }
         }
     }
 }

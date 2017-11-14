@@ -104,7 +104,7 @@ namespace Interdisciplinar.Controllers
             }
 
 
-            Aluno aluno = _context.Alunos.Where(a => a.AlunoId == id).Include("Ideias.Aluno").First();
+            Aluno aluno = _context.Alunos.Where(a => a.AlunoId == id).Include(a=>a.Curso).Include("Ideias.Aluno").First();
 
             if (aluno == null)
             {

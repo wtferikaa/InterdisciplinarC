@@ -20,9 +20,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdeiaId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
 
@@ -33,25 +30,9 @@
                 @Html.DisplayNameFor(model => model.Recomendacao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataAnalise)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Aprovado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Resposta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlunoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdeiaPaiId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DepartamentoOpetId)
             </th>
 
         </tr>
@@ -61,40 +42,18 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdeiaId)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
-                <th>
+                <td>
                     @Html.DisplayFor(modelItem => item.DescricaoProblema)
-                    </th>
-                <th>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Recomendacao)
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => item.DataCadastro)
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => item.DataAnalise)
-                </th>
-                <th>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Aprovado)
-                <th>
-                    @Html.DisplayFor(modelItem => item.Resposta)
+                </td>
 
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => item.Aluno.Nome)
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => item.IdeiaExistente.Nome)
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => item.DepartamentosOpet.Nome)
-                </th>
-
-              
                 <td>
                     @Html.ActionLink("Alterar", "Edit", new { id = item.IdeiaId })	|
                     @Html.ActionLink("Detalhes", "Details", new { id = item.IdeiaId })	|

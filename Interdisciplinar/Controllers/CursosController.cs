@@ -79,7 +79,7 @@ namespace Interdisciplinar.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
             Curso curso = _context.Cursos.Where(c => c.CursoId == id).Include("Alunos.Curso").First();
 
             if (curso == null)
@@ -113,13 +113,22 @@ namespace Interdisciplinar.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(long id)
         {
+            try
+            {
+                Curso curso = _context.Cursos.Find(id);
+                _context.Cursos.Remove(curso);
+                _context.SaveChanges();
+                TempData["Message"] = "Curso " + curso.Nome.ToUpper() + " foi removido";
 
-            Curso curso = _context.Cursos.Find(id);
-            _context.Cursos.Remove(curso);
-            _context.SaveChanges();
-            TempData["Message"] = "Curso " + curso.Nome.ToUpper() + " foi removido";
+                return RedirectToAction("Index");
 
-            return RedirectToAction("Index");
+            }
+
+            catch
+            {
+
+                return View();
+            }
         }
     }
 
